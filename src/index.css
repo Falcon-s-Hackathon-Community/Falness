@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    /* Light Theme (Frosted Liquid Ice) */
+    --bg-page: #f8fafc;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --border-glass: rgba(15, 23, 42, 0.08);
+    --border-glass-hover: rgba(15, 23, 42, 0.18);
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-bg-hover: rgba(255, 255, 255, 0.85);
+    --glass-card: rgba(255, 255, 255, 0.7);
+    --glass-dropdown: rgba(255, 255, 255, 0.85);
+    --glass-terminal: #0f172a;
+    --glass-terminal-text: #f1f5f9;
+    --specular-highlight: rgba(255, 255, 255, 0.8);
+    --glass-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  .dark {
+    /* Dark Theme (Obsidian Liquid Glass) */
+    --bg-page: #050508;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border-glass: rgba(255, 255, 255, 0.08);
+    --border-glass-hover: rgba(255, 255, 255, 0.18);
+    --glass-bg: rgba(18, 18, 24, 0.55);
+    --glass-bg-hover: rgba(30, 30, 40, 0.75);
+    --glass-card: rgba(12, 12, 17, 0.6);
+    --glass-dropdown: rgba(10, 10, 15, 0.85);
+    --glass-terminal: #08080c;
+    --glass-terminal-text: #f8fafc;
+    --specular-highlight: rgba(255, 255, 255, 0.12);
+    --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.025em;
+  }
+
+  code, pre, kbd, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Liquid Glass Utilities */
+.liquid-glass {
+  background: var(--glass-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass:hover {
+  border-color: var(--border-glass-hover);
+  background: var(--glass-bg-hover);
+}
+
+.liquid-glass-dropdown {
+  background: var(--glass-dropdown);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 var(--specular-highlight);
+}
+
+.liquid-button {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+  box-shadow: inset 0 1px 0 var(--specular-highlight);
+  transition: all 0.2s ease;
+}
+
+.liquid-button:hover {
+  border-color: var(--border-glass-hover);
+  background: var(--glass-bg-hover);
+  transform: translateY(-1px);
+}
+
+/* Subtle architectural grid pattern */
+.bg-grid-architectural {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(125, 125, 125, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(125, 125, 125, 0.05) 1px, transparent 1px);
+}
+
+/* Monochromatic glow and reflections */
+.liquid-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-sheen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+
+.liquid-sheen:hover::after {
+  left: 200%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(125, 125, 125, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(125, 125, 125, 0.4);
+}

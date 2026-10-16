@@ -1,0 +1,10 @@
+# Robots.txt for The Falcons
+# https://thefalcons.in
+
+User-agent: *
+Allow: /
+Allow: /teams
+Allow: /policies
+
+# Sitemaps
+Sitemap: https://thefalcons.in/sitemap.xml
